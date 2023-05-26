@@ -1,0 +1,44 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatter": {
+        "default": {
+            "format": "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            "datefmt": "%Y-%m-%d %H:%M:%S"
+        },
+        "error": {
+            "format": "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            "datefmt": "%Y-%m-%d %H:%M:%S"
+        }
+    },
+    "handlers":{
+        "file":{
+            "level":"DEBUG",
+            "class":"logging.handlers.RotatingFileHandler",
+            "filename":"./logs/debug.log",
+            "formatter":"default",
+            "maxBytes": 1024 * 1024 * 5,
+            "backupCount": 5
+        },
+        "error_file":{
+            "level":"ERROR",
+            "class":"logging.handlers.RotatingFileHandler",
+            "filename":"./logs/error.log",
+            "formatter":"error",
+            "maxBytes": 1024 * 1024 * 5,
+            "backupCount": 5
+        },
+        "console":{
+            "level":"DEBUG",
+            "class":"logging.StreamHandler",
+            "formatter":"default"
+        }
+    },
+    "loggers":{
+        "cam-capture-logger-1":{
+            "level":"DEBUG",
+            "handlers":["file", "error_file", "console"],
+            "propagate": true
+        }
+    }
+}
