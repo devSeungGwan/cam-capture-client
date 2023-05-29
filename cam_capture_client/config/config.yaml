@@ -1,0 +1,15 @@
+CAPTURE
+  SAVE_WIDTH: 3264
+  SAVE_HEIGHT: 2464
+  CAM_WIDTH: 816
+  CAM_HEIGHT: 612
+  CAM_NO: 0
+  CAM_ROTATE: 0
+  CAM_NAME: "cam"
+  OUTPUT_PATH: "./output"
+CONTROL
+  CAPTURE: "c"
+  CLOSE: "esc"
+LOGGER
+  NAME: "cam-capture-logger-1"
+  CONF_PATH: "./config/logger.yaml"
