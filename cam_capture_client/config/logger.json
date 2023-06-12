@@ -1,7 +1,7 @@
 {
     "version": 1,
     "disable_existing_loggers": false,
-    "formatter": {
+    "formatters": {
         "default": {
             "format": "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
             "datefmt": "%Y-%m-%d %H:%M:%S"
@@ -17,7 +17,6 @@
             "class":"logging.handlers.RotatingFileHandler",
             "filename":"./logs/debug.log",
             "formatter":"default",
-            "maxBytes": 1024 * 1024 * 5,
             "backupCount": 5
         },
         "error_file":{
@@ -25,7 +24,6 @@
             "class":"logging.handlers.RotatingFileHandler",
             "filename":"./logs/error.log",
             "formatter":"error",
-            "maxBytes": 1024 * 1024 * 5,
             "backupCount": 5
         },
         "console":{

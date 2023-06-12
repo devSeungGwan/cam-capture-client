@@ -1,1 +1,1 @@
-$ ls -ltrh /dev/video*
+ls -ltrh /dev/video*

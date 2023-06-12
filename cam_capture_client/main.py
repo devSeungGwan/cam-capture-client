@@ -6,7 +6,7 @@ from cam_capture_client.common import cfg
 if __name__ == "__main__":
     parser = ArgumentParser()
     
-    parser.add_argument("--config", type=str, default="./config/config.yaml", help="config file path")
+    parser.add_argument("--config", type=str, default="./cam_capture_client/config/config.yaml", help="config file path")
     args = parser.parse_args()
     
     cfg.merge_from_file(args.config)
