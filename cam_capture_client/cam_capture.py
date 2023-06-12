@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 from fvcore.common.config import CfgNode as CN
 
-from common.utils import get_now_time, image_rotate, get_cam, Logger
+from cam_capture_client.common import get_now_time, image_rotate, get_cam, Logger
 
 class CamCapture:
     def __init__(self, cfg: CN):
@@ -18,10 +18,13 @@ class CamCapture:
         self.__cam_name = cfg.CAPTURE.CAM_NAME
         self.__output_path = cfg.CAPTURE.OUTPUT_PATH
         self.__now = get_now_time()
+        
         self.__image_path = os.path.join(self.__output_path, self.__now)
+        os.makedirs(self.__image_path, exist_ok=True)
+        
         self.__iter = 0
 
-        self.__cap = get_cam(self.__cam_no, self.__cam_width, self.__cam_height)
+        self.__cap = get_cam(self.__cam_no, self.__save_width, self.__save_height)
         self.__logger = Logger(cfg)
         
         
@@ -30,16 +33,16 @@ class CamCapture:
         cv2.imwrite(path_save, image)
         self.__logger.info(f"save image: {path_save}")
     
+    
     def run(self):
         self.__logger.info("start capture")
         
-        ret, cam = self.__cap.read()
-        
-        cam_show = cv2.resize(cam, (self.__save_width, self.__save_height))
-        cam_show = image_rotate(cam_show, self.__cam_rotate)
-        
         while True:
+            ret, cam = self.__cap.read()
+            
             if ret:
+                cam_show = cv2.resize(cam, (self.__cam_width, self.__cam_height))
+                cam_show = image_rotate(cam_show, self.__cam_rotate)
                 cv2.imshow(self.__cam_name, cam_show)
                 
                 if cv2.waitKey(1) & 0xFF == ord("c"):
@@ -51,8 +54,8 @@ class CamCapture:
                     print("closed wait...")
                     break
             
-            self.__cap.release()
-            cv2.destroyAllWindows()
+        self.__cap.release()
+        cv2.destroyAllWindows()
         
         self.__logger.info("end capture")
         
