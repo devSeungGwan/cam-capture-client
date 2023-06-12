@@ -1,7 +1,8 @@
 import logging
+import logging.config
 from fvcore.common.config import CfgNode as CN
 
-from common.utils import read_json
+from cam_capture_client.common import read_json
 
 class Logger:
     def __init__(self, cfg: CN):
