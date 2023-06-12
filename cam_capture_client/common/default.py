@@ -9,7 +9,7 @@ _C.CAPTURE.CAM_HEIGHT = 612
 _C.CAPTURE.CAM_NO = 0
 _C.CAPTURE.CAM_ROTATE = 0
 _C.CAPTURE.CAM_NAME = "cam"
-_C.CAPTURE.OUTPUT_PATH = "./output"
+_C.CAPTURE.OUTPUT_PATH = "./outputs"
 
 _C.CONTROL = CN()
 _C.CONTROL.CAPTURE = "c"
@@ -17,4 +17,4 @@ _C.CONTROL.CLOSE = "esc"
 
 _C.LOGGER = CN()
 _C.LOGGER.NAME = "cam-capture"
-_C.LOGGER.CONF_PATH = "./config/logger.json"
+_C.LOGGER.CONF_PATH = "./cam_capture_client/config/logger.json"
